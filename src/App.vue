@@ -5,7 +5,7 @@
         <input 
         type="text" 
         class="search-bar" 
-        placeholder="Search..."
+        placeholder="Enter name of the city"
         v-model="query"
         @keypress="fetchWeather">
       </div>
@@ -20,7 +20,8 @@
         </div>
         <div class="weather-box">
           <div class="temp">{{Math.round(weather.main.temp)}}℃</div>
-          <div class="weather">{{weather.weather[0].main}}</div>
+          <div class="weather">{{weather.weather[0].main}} ({{weather.weather[0].description}})</div>
+          <div class="weather">Wind: {{weather.wind.speed}}m/s</div>
         </div>
       </div>
     </main>
@@ -50,6 +51,8 @@ export default {
     },
     setResults(results) {
       this.weather = results;
+      /* eslint-disable no-console */
+      console.log(this.weather)
     },
     dateBuilder() {
       let d = new Date();
